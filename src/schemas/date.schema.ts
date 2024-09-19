@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const dateSchema = new mongoose.Schema(
+const dateSchema = new mongoose.Schema(
   {
     date: {
       type: Date,
@@ -21,3 +21,5 @@ export const dateSchema = new mongoose.Schema(
   },
   { versionKey: false }
 );
+
+export { dateSchema };

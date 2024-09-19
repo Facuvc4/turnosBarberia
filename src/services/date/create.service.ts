@@ -4,7 +4,7 @@ import dateModel from '../../models/date.model';
 const main = async (date: string, initHour: number, endHour: number) => {
   try {
     const newDate = new Date(date);
-    const result = await dateModel.updateOne(
+    await dateModel.updateOne(
       {
         date: newDate,
         initHour: initHour,
@@ -14,10 +14,8 @@ const main = async (date: string, initHour: number, endHour: number) => {
       { $set: { initHour, endHour, status: true } },
       { upsert: true }
     );
-
-    console.log(result); // Log para ver si se crea correctamente
   } catch (error) {
-    errorHelper.badRequestError('Error al crear el horario');
+    errorHelper.internalServerError('Error al crear el horario');
   }
 };
 
