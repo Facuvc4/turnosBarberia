@@ -7,20 +7,17 @@ const main = async (
   idDate: mongoose.Schema.Types.ObjectId,
   idUser: mongoose.Schema.Types.ObjectId
 ) => {
-  try {
-    const date = getDate(idDate);
-    if (!date) errorHelper.badRequestError('Fecha no encontrada');
+  const date = getDate(idDate);
+  if (!date) errorHelper.badRequestError('Fecha no encontrada');
 
-    await shiftModel.updateOne(
-      {
-        idDate,
-      },
-      { $setOnInsert: { idUser } },
-      { upsert: true }
-    );
-  } catch (error) {
-    errorHelper.internalServerError('Error al crear el turno');
-  }
+  const newDate = await shiftModel.updateOne(
+    {
+      idDate,
+    },
+    { $setOnInsert: { idUser } },
+    { upsert: true }
+  );
+  if (!newDate) errorHelper.internalServerError('Error al crear el turno');
 };
 
 export default main;

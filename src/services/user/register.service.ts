@@ -23,7 +23,7 @@ const main = async (
     role: 'user',
   });
 
-  return newUser;
+  if (!newUser) errorHelper.internalServerError('Error al crear el usuario');
 };
 
 export default main;
