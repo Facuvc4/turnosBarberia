@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import getDates from '../../helpers/date/get.all.helper';
+import allShiftsService from '../../services/home/all.shifts.service';
 
 const main = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.token;
   if (!token) res.redirect('/login');
-  const dates = await getDates();
-  res.render('home', { dates });
+  const dates = await allShiftsService();
+  res.render('allShifts', { dates });
 };
 
 export default main;
