@@ -11,7 +11,7 @@ const main = async (req: Request, res: Response, next: NextFunction) => {
   ) as JwtPayload;
   const idUser = decoded.id;
   const dates = await ownShiftsService(idUser);
-  res.render('ownShifts', { dates });
+  res.render('own-shifts', { dates, hideNavbar: false });
 };
 
 export default main;

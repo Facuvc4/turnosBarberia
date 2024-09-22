@@ -1,7 +1,6 @@
 <%- include('partials/header') %>
-<main class="container flex-grow-1">
-  <h2 class="my-4 text-center">Mis Turnos</h2>
-  <p class="text-center">Te recordamos llegar a horario porfavor</p>
+<section class="container flex-grow-1">
+  <h2 class="my-4 text-center">Turnos disponibles</h2>
   <div class="row">
     <% dates.forEach(function(date) { %>
     <div class="col-md-4 mb-3">
@@ -11,6 +10,13 @@
           <p class="card-text">
             De: <%= date.initHour %>hs a <%= date.endHour %>hs
           </p>
+          <p class="card-text">
+            Estado: <% if(date.status) { %>
+            <span class="badge bg-success">Disponible</span>
+            <% } else { %>
+            <span class="badge bg-danger">Tomado</span>
+            <% } %>
+          </p>
           <% if(date.status) { %>
           <a class="btn btn-primary">Tomar Turno</a>
           <% } %>
@@ -19,5 +25,5 @@
     </div>
     <% }); %>
   </div>
-</main>
+</section>
 <%- include('partials/footer') %>
