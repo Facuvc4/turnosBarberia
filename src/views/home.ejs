@@ -1,7 +1,19 @@
 <%- include('partials/header') %>
-<div class="container d-flex flex-column align-items-center mt-5 min-vh-100 text-center">
+<main class="container flex-grow-1">
+  <div class="container d-flex flex-column align-items-center mt-5 text-center">
     <h1 class="mb-4">Bienvenido</h1>
-    <button class="btn btn-primary m-3 btn-lg" onclick="window.location.href='/shifts'">Turnos Disponibles</button>
-    <button class="btn btn-primary m-3 btn-lg">Mis Turnos</button>
-</div>
+    <button
+      class="btn btn-primary m-3 btn-lg"
+      onclick="window.location.href='/shifts'"
+    >
+      Turnos Disponibles
+    </button>
+    <button
+      class="btn btn-primary m-3 btn-lg"
+      onclick="window.location.href='/shifts/own'"
+    >
+      Mis Turnos
+    </button>
+  </div>
+</main>
 <%- include('partials/footer') %>

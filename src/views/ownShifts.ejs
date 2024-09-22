@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<main class="container flex-grow-1">
+  <h2 class="my-4 text-center">Mis Turnos</h2>
+  <p class="text-center">Te recordamos llegar a horario porfavor</p>
+  <div class="row">
+    <% dates.forEach(function(date) { %>
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+          <p class="card-text">
+            De: <%= date.initHour %>hs a <%= date.endHour %>hs
+          </p>
+          <% if(date.status) { %>
+          <a class="btn btn-primary">Tomar Turno</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</main>
+<%- include('partials/footer') %>

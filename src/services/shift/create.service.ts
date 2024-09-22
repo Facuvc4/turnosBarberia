@@ -8,19 +8,17 @@ const main = async (
   idDate: mongoose.Schema.Types.ObjectId,
   idUser: mongoose.Schema.Types.ObjectId
 ) => {
-  const date = getDate(idDate);
+  const date = await getDate(idDate);
   if (!date) errorHelper.badRequestError('Fecha no encontrada');
 
   const shift = await shiftModel.findOne({ idDate });
   if (shift) errorHelper.badRequestError('El turno ya existe');
 
-  const newShift = await shiftModel.create(
-    {
-      idDate,
-      idUser,
-    },
-  );
-  await dateModel.updateOne({_id: idDate}, {$set: {status: false}});
+  const newShift = await shiftModel.create({
+    idDate,
+    idUser,
+  });
+  await dateModel.updateOne({ _id: idDate }, { $set: { status: false } });
   if (!newShift) errorHelper.internalServerError('Error al crear el turno');
 };
 
