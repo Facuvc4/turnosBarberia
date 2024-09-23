@@ -6,7 +6,7 @@ import apiRouter from './src/routers/index.router';
 import middlewares from './src/middlewares/index';
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 middlewares(app);
 app.use(apiRouter);
@@ -17,7 +17,7 @@ async function startServer() {
     await connectDB();
     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
   } catch (error) {
-    console.log('Error starting server');
+    console.log('Error starting server' + error);
   }
 }
 
