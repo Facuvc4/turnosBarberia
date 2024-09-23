@@ -18,7 +18,7 @@
             <% } %>
           </p>
           <% if(date.status) { %>
-          <a class="btn btn-primary">Tomar Turno</a>
+          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>">Tomar Turno</a>
           <% } %>
         </div>
       </div>
@@ -26,4 +26,32 @@
     <% }); %>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('#takeShift').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const confirm = window.confirm('¿Deseas tomar este turno?');
+     if (confirm) {
+      const idDate = this.getAttribute('data-id');
+      fetch('/shift/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idDate }),
+      })
+      .then(response => {
+        if (response.status === 200) {
+          window.location.href = '/shifts/own';
+        } else {
+          console.error('Error');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+    });
+  });
+</script>
 <%- include('partials/footer') %>

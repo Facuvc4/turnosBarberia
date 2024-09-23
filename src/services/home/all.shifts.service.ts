@@ -10,6 +10,7 @@ const main = async () => {
       .utc(dateModel.date)
       .format('D [de] MMMM [de] YYYY');
     return {
+      id: dateModel._id,
       date: dateModel.date,
       initHour: dateModel.initHour,
       endHour: dateModel.endHour,

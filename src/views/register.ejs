@@ -84,8 +84,6 @@
 </section>
 
 <script>
-  const API_URL = 'http://localhost:3000';
-
   document
     .getElementById('registerForm')
     .addEventListener('submit', async function (event) {
@@ -108,7 +106,7 @@
       }
 
       try {
-        const response = await fetch(`${API_URL}/user/register`, {
+        const response = await fetch(`/user/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password, name, phone }),

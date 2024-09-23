@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import loginService from '../../services/user/login.service';
+import userModel from '../../models/user.model';
 
 const main = async (req: Request, res: Response, next: NextFunction) => {
   try {

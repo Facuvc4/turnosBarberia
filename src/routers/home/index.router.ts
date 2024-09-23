@@ -1,13 +1,11 @@
 import express from 'express';
 import allShiftsController from '../../controllers/home/all.shifts.controller';
 import ownShiftsController from '../../controllers/home/own.shifts.controller';
+import homeController from '../../controllers/home/home.controller';
 
 const homeRouter = express.Router();
 
-homeRouter.get('/', (req, res) => {
-  if (!req.cookies.token) return res.redirect('/login');
-  res.render('home', { hideNavbar: false });
-});
+homeRouter.get('/', homeController);
 
 homeRouter.get('/shifts', allShiftsController);
 
