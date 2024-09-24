@@ -14,7 +14,7 @@ const main = async (req: Request, res: Response, next: NextFunction) => {
   const isAdmin = await userModel.findOne({ _id: idUser, role: 'admin' });
   if (isAdmin) { 
     const dates = await allShiftsService();
-    return res.render('admin', { dates, hideNavbar: false })}
+    return res.render('admin', { dates, hideNavbar: true })}
   res.render('home', { hideNavbar: false });
 }
 
