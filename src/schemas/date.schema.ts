@@ -18,6 +18,10 @@ const dateSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    barber: {
+      type: String,
+      required: true,
+    },
   },
   { versionKey: false }
 );

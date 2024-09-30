@@ -9,7 +9,8 @@
         <div class="card-body">
           <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
           <p class="card-text">
-            De: <%= date.initHour %>hs a <%= date.endHour %>hs
+            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+            date.barber %>
           </p>
           <% if(date.status) { %>
           <a class="btn btn-primary">Tomar Turno</a>

@@ -8,7 +8,8 @@
         <div class="card-body">
           <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
           <p class="card-text">
-            De: <%= date.initHour %>hs a <%= date.endHour %>hs
+            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+            date.barber %>
           </p>
           <p class="card-text">
             Estado: <% if(date.status) { %>
@@ -18,7 +19,9 @@
             <% } %>
           </p>
           <% if(date.status) { %>
-          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>">Tomar Turno</a>
+          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+            >Tomar Turno</a
+          >
           <% } %>
         </div>
       </div>
@@ -28,29 +31,29 @@
 </section>
 
 <script>
-  document.querySelectorAll('#takeShift').forEach(function(button) {
-    button.addEventListener('click', function() {
+  document.querySelectorAll('#takeShift').forEach(function (button) {
+    button.addEventListener('click', function () {
       const confirm = window.confirm('¿Deseas tomar este turno?');
-     if (confirm) {
-      const idDate = this.getAttribute('data-id');
-      fetch('/shift/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ idDate }),
-      })
-      .then(response => {
-        if (response.status === 200) {
-          window.location.href = '/shifts/own';
-        } else {
-          console.error('Error');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
+      if (confirm) {
+        const idDate = this.getAttribute('data-id');
+        fetch('/shift/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ idDate }),
+        })
+          .then((response) => {
+            if (response.status === 200) {
+              window.location.href = '/shifts/own';
+            } else {
+              console.error('Error');
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
     });
   });
 </script>

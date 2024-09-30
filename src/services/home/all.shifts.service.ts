@@ -1,25 +1,29 @@
-import getDates from '../../helpers/date/get.all.helper';
 import moment from 'moment-timezone';
+import shiftModel from '../../models/shift.model';
+import userModel from '../../models/user.model';
+import allDatesService from './all.dates.service';
 
 moment.locale('es');
 
 const main = async () => {
-  const dates = await getDates();
-  const formattedDates = dates.map((dateModel) => {
-    const localDate = moment
-      .utc(dateModel.date)
-      .format('D [de] MMMM [de] YYYY');
-    return {
-      id: dateModel._id,
-      date: dateModel.date,
-      initHour: dateModel.initHour,
-      endHour: dateModel.endHour,
-      status: dateModel.status,
-      formattedDate: localDate,
-    };
-  });
+  let data = [];
+  const formattedDates = await allDatesService();
+  for (const date of formattedDates) {
+    const shift = await shiftModel.findOne({ idDate: date.id });
+    const user = await userModel.findOne({ _id: shift?.idUser });
 
-  return formattedDates;
+    data.push({
+      date: {
+        ...date,
+      },
+      user: {
+        name: user?.name,
+        phone: user?.phone,
+      },
+    });
+  }
+
+  return data;
 };
 
 export default main;

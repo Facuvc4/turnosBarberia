@@ -12,10 +12,11 @@ const main = async (req: Request, res: Response, next: NextFunction) => {
   ) as JwtPayload;
   const idUser = decoded.id;
   const isAdmin = await userModel.findOne({ _id: idUser, role: 'admin' });
-  if (isAdmin) { 
-    const dates = await allShiftsService();
-    return res.render('admin', { dates, hideNavbar: false })}
+  if (isAdmin) {
+    const datas = await allShiftsService();
+    return res.render('./admin/admin', { datas, hideNavbar: false });
+  }
   res.render('home', { hideNavbar: false });
-}
+};
 
 export default main;
