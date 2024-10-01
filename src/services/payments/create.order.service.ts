@@ -23,9 +23,9 @@ const main = async (
         },
       ],
       back_urls: {
-        success: 'https://www.facebook.com/',
-        failure: 'https://www.instagram.com/?hl=es',
-        pending: 'https://x.com/home',
+        success: 'https://turnosbarberia.onrender.com/',
+        failure: 'https://turnosbarberia.onrender.com/',
+        pending: 'https://turnosbarberia.onrender.com/',
       },
       auto_return: 'approved',
       external_reference: `${idDate}+${idUser}`,
