@@ -22,6 +22,7 @@
           <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
             >Tomar Turno</a
           >
+          <div id="wallet_container"></div>
           <% } %>
         </div>
       </div>
@@ -29,9 +30,8 @@
     <% }); %>
   </div>
 </section>
-
 <script>
-  document.querySelectorAll('#takeShift').forEach(function (button) {
+  /*document.querySelectorAll('#takeShift').forEach(function (button) {
     button.addEventListener('click', function () {
       const confirm = window.confirm('¿Deseas tomar este turno?');
       if (confirm) {
@@ -55,6 +55,56 @@
           });
       }
     });
+  }); */
+
+  const mp = new MercadoPago('TEST-f00175d6-8c9d-498b-ad25-4900c37dc4b9', {
+    locale: 'es-AR',
   });
+
+  document.querySelectorAll('#takeShift').forEach(function (button) {
+    button.addEventListener('click', async () => {
+      try {
+        const orderData = {
+          title: 'Reserva de Turno',
+          quantity: 1,
+          unit_price: 500,
+          idDate: button.getAttribute('data-id'),
+        };
+
+        const response = await fetch('/payments/create_order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
+
+        const preference = await response.json();
+        createCheckoutButton(preference.id);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  });
+
+  const createCheckoutButton = (preferenceId) => {
+    const bricksBuilder = mp.bricks();
+
+    const renderComponent = async () => {
+      if (window.checkoutButton) window.checkoutButton.unmount();
+
+      window.checkoutButton = await bricksBuilder.create(
+        'wallet',
+        'wallet_container',
+        {
+          initialization: {
+            preferenceId: preferenceId,
+          },
+        }
+      );
+    };
+
+    renderComponent();
+  };
 </script>
 <%- include('partials/footer') %>
