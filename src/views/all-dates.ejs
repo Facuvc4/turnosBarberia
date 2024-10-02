@@ -2,7 +2,7 @@
 <section class="container flex-grow-1">
   <h2 class="my-4 text-center">Turnos disponibles</h2>
   <div class="row">
-    <% dates.forEach(function(date) { %>
+    <% dates.forEach(function(date) { %> <% if(date.status) { %>
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
         <div class="card-body">
@@ -12,52 +12,21 @@
             date.barber %>
           </p>
           <p class="card-text">
-            Estado: <% if(date.status) { %>
+            Estado:
             <span class="badge bg-success">Disponible</span>
-            <% } else { %>
-            <span class="badge bg-danger">Tomado</span>
-            <% } %>
           </p>
-          <% if(date.status) { %>
           <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
             >Tomar Turno</a
           >
           <div id="wallet_container"></div>
-          <% } %>
         </div>
       </div>
     </div>
-    <% }); %>
+    <% } %> <% }); %>
   </div>
 </section>
 <script>
-  /*document.querySelectorAll('#takeShift').forEach(function (button) {
-    button.addEventListener('click', function () {
-      const confirm = window.confirm('¿Deseas tomar este turno?');
-      if (confirm) {
-        const idDate = this.getAttribute('data-id');
-        fetch('/shift/create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ idDate }),
-        })
-          .then((response) => {
-            if (response.status === 200) {
-              window.location.href = '/shifts/own';
-            } else {
-              console.error('Error');
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      }
-    });
-  }); */
-
-  const mp = new MercadoPago('APP_USR-3067bf6e-7c2c-40c7-a909-d9a26126a8a4', {
+  const mp = new MercadoPago('APP_USR-10080dfc-08c8-44be-9f51-8e3a45eb9a45', {
     locale: 'es-AR',
   });
 
