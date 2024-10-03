@@ -13,8 +13,17 @@ const main = async (req: Request, res: Response, next: NextFunction) => {
   const idUser = decoded.id;
   const isAdmin = await userModel.findOne({ _id: idUser, role: 'admin' });
   if (isAdmin) return res.redirect('/');
-  const dates = await allDatesService();
-  res.render('all-dates', { dates, hideNavbar: false });
+  const { formattedDates, lucas, brian, mirko } = await allDatesService();
+  if (lucas) {
+    const lucasIS = true;
+  }
+  res.render('all-dates', {
+    dates: formattedDates,
+    lucas: lucas,
+    brian,
+    mirko,
+    hideNavbar: false,
+  });
 };
 
 export default main;

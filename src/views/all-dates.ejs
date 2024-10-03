@@ -2,7 +2,61 @@
 <section class="container flex-grow-1">
   <h2 class="my-4 text-center">Turnos disponibles</h2>
   <div class="row">
-    <% dates.forEach(function(date) { %> <% if(date.status) { %>
+    <!-- Turnos de Lucas -->
+
+    <h3 class="my-4 text-center">Lucas</h3>
+    <% dates.forEach(function(date) { %> <% if (date.barber === 'Lucas Gonzalez'
+    && date.status) { %>
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+          <p class="card-text">
+            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+            date.barber %>
+          </p>
+          <p class="card-text">
+            Estado:
+            <span class="badge bg-success">Disponible</span>
+          </p>
+          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+            >Tomar Turno</a
+          >
+          <div id="wallet_container"></div>
+        </div>
+      </div>
+    </div>
+    <% } %> <% }); %>
+    <!-- Turnos de Brian -->
+
+    <h3 class="my-4 text-center">Brian</h3>
+    <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo' &&
+    date.status) { %>
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+          <p class="card-text">
+            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+            date.barber %>
+          </p>
+          <p class="card-text">
+            Estado:
+            <span class="badge bg-success">Disponible</span>
+          </p>
+          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+            >Tomar Turno</a
+          >
+          <div id="wallet_container"></div>
+        </div>
+      </div>
+    </div>
+    <% } %> <% }); %>
+    <!-- Turnos de Mirko -->
+
+    <h3 class="my-4 text-center">Mirko</h3>
+    <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
+    && date.status) { %>
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
         <div class="card-body">

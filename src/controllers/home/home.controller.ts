@@ -13,8 +13,14 @@ const main = async (req: Request, res: Response, next: NextFunction) => {
   const idUser = decoded.id;
   const isAdmin = await userModel.findOne({ _id: idUser, role: 'admin' });
   if (isAdmin) {
-    const datas = await allShiftsService();
-    return res.render('./admin/admin', { datas, hideNavbar: false });
+    const { datas, lucas, brian, mirko } = await allShiftsService();
+    return res.render('./admin/admin', {
+      datas,
+      lucas,
+      brian,
+      mirko,
+      hideNavbar: false,
+    });
   }
   res.render('home', { hideNavbar: false });
 };

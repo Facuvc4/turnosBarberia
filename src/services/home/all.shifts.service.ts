@@ -6,13 +6,13 @@ import allDatesService from './all.dates.service';
 moment.locale('es');
 
 const main = async () => {
-  let data = [];
-  const formattedDates = await allDatesService();
+  let datas = [];
+  const { formattedDates, lucas, brian, mirko } = await allDatesService();
   for (const date of formattedDates) {
     const shift = await shiftModel.findOne({ idDate: date.id });
     const user = await userModel.findOne({ _id: shift?.idUser });
 
-    data.push({
+    datas.push({
       date: {
         ...date,
       },
@@ -23,7 +23,7 @@ const main = async () => {
     });
   }
 
-  return data;
+  return { datas, lucas, brian, mirko };
 };
 
 export default main;
