@@ -3,7 +3,8 @@
   <h2 class="my-4 text-center">Turnos disponibles</h2>
   <div class="row">
     <!-- Turnos de Lucas -->
-
+    <% const hasLucas = dates.some(date => date.barber === 'Lucas Gonzalez' &&
+    date.status); %> <% if (hasLucas) { %>
     <h3 class="my-4 text-center">Lucas</h3>
     <% dates.forEach(function(date) { %> <% if (date.barber === 'Lucas Gonzalez'
     && date.status) { %>
@@ -26,9 +27,10 @@
         </div>
       </div>
     </div>
-    <% } %> <% }); %>
+    <% } %> <% }); %> <% } %>
     <!-- Turnos de Brian -->
-
+    <% const hasBrian = dates.some(date => date.barber === 'Brian Bravo' &&
+    date.status); %> <% if (hasBrian) { %>
     <h3 class="my-4 text-center">Brian</h3>
     <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo' &&
     date.status) { %>
@@ -51,9 +53,11 @@
         </div>
       </div>
     </div>
-    <% } %> <% }); %>
+    <% } %> <% }); %> <% } %>
     <!-- Turnos de Mirko -->
 
+    <% const hasMirko = dates.some(date => date.barber === 'Mirko Collao' &&
+    date.status); %> <% if (hasMirko) { %>
     <h3 class="my-4 text-center">Mirko</h3>
     <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
     && date.status) { %>
@@ -76,7 +80,7 @@
         </div>
       </div>
     </div>
-    <% } %> <% }); %>
+    <% } %> <% }); %> <% } %>
   </div>
 </section>
 <script>

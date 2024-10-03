@@ -1,6 +1,5 @@
 import getDates from '../../helpers/date/get.all.helper';
 import moment from 'moment-timezone';
-import dateModel from '../../models/date.model';
 
 moment.locale('es');
 
@@ -20,22 +19,8 @@ const main = async () => {
       formattedDate: localDate,
     };
   });
-  const lucas = await dateModel.findOne({
-    barber: 'Lucas Gonzalez',
-    status: true,
-  });
 
-  const brian = await dateModel.findOne({
-    barber: 'Brian Bravo',
-    status: true,
-  });
-
-  const mirko = await dateModel.findOne({
-    barber: 'Mirko Collao',
-    status: true,
-  });
-
-  return { formattedDates, lucas, brian, mirko };
+  return formattedDates;
 };
 
 export default main;

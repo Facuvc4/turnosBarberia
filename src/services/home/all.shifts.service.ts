@@ -7,7 +7,7 @@ moment.locale('es');
 
 const main = async () => {
   let datas = [];
-  const { formattedDates, lucas, brian, mirko } = await allDatesService();
+  const formattedDates = await allDatesService();
   for (const date of formattedDates) {
     const shift = await shiftModel.findOne({ idDate: date.id });
     const user = await userModel.findOne({ _id: shift?.idUser });
@@ -23,7 +23,7 @@ const main = async () => {
     });
   }
 
-  return { datas, lucas, brian, mirko };
+  return datas;
 };
 
 export default main;
