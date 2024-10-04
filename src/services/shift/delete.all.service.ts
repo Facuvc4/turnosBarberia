@@ -4,12 +4,11 @@ import moment from 'moment-timezone';
 
 const main = async () => {
   const actualDate = moment().utc().startOf('day').toDate();
-  await shiftModel.deleteMany({
-    date: { $lt: actualDate },
-  });
-  await dateModel.deleteMany({
-    date: { $lt: actualDate },
-  });
+  const idDates = await dateModel.find({ date: { $lt: actualDate } }, '_id');
+  for (const idDate of idDates) {
+    await shiftModel.deleteMany({ idDate: idDate._id });
+    await dateModel.deleteOne({ _id: idDate._id });
+  }
 };
 
 export default main;
