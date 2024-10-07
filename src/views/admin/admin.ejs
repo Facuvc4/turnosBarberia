@@ -16,10 +16,10 @@
 
     <% if (hasLucas) { %>
       <h3 class="my-4 text-center" id="barberHeader" style="cursor: pointer;" onclick="toggleDates()">Lucas <span id="arrowIcon">⬇️</span></h3>
-      <div id="datesContainer" style="display: none;">
+      <div class="row" id="datesContainer" style="display: none;">
           <% datas.forEach(function(data) { %>
               <% if (data.date.barber === 'Lucas Gonzalez') { %>
-                  <div class="col-md-4 m-3">
+                  <div class="col-md-4 mb-3">
                       <div class="card shadow-sm">
                           <div class="card-body">
                               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
@@ -53,10 +53,10 @@
 <!-- Turnos de Brian -->
 <% if (hasBrian) { %>
   <h3 class="my-4 text-center" id="brianHeader" style="cursor: pointer;" onclick="toggleBrian()">Brian <span id="brianArrow">⬇️</span></h3>
-  <div id="brianDates" style="display: none;">
+  <div class="row" id="brianDates" style="display: none;">
     <% datas.forEach(function(data) { %>
       <% if (data.date.barber === 'Brian Bravo') { %>
-        <div class="col-md-4 m-3">
+        <div class="col-md-4 mb-3">
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
@@ -87,10 +87,10 @@
 <!-- Turnos de Mirko -->
 <% if (hasMirko) { %>
   <h3 class="my-4 text-center" id="mirkoHeader" style="cursor: pointer;" onclick="toggleMirko()">Mirko <span id="mirkoArrow">⬇️</span></h3>
-  <div id="mirkoDates" style="display: none;">
+  <div class="row" id="mirkoDates" style="display: none;">
     <% datas.forEach(function(data) { %>
       <% if (data.date.barber === 'Mirko Collao') { %>
-        <div class="col-md-4 m-3">
+        <div class="col-md-4 mb-3">
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>

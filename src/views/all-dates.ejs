@@ -13,10 +13,10 @@
     >
       Lucas <span id="lucasArrow">⬇️</span>
     </h3>
-    <div id="lucasDates" style="display: none">
+    <div class="row" id="lucasDates" style="display: none">
       <% dates.forEach(function(date) { %> 
         <% if (date.barber == 'Lucas Gonzalez' && date.status) { %>
-          <div class="col-md-4 m-3">
+          <div class="col-md-4 mb-3">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
@@ -47,10 +47,10 @@
     >
       Brian <span id="brianArrow">⬇️</span>
     </h3>
-    <div id="brianDates" style="display: none">
+    <div class="row" id="brianDates" style="display: none">
       <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo'
       && date.status) { %>
-      <div class="col-md-4 m-3">
+      <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
@@ -84,10 +84,10 @@
     >
       Mirko <span id="mirkoArrow">⬇️</span>
     </h3>
-    <div id="mirkoDates" style="display: none">
+    <div class="row" id="mirkoDates" style="display: none">
       <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
       && date.status) { %>
-      <div class="col-md-4 m-3">
+      <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
