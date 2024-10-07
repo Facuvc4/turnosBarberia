@@ -5,82 +5,111 @@
     <!-- Turnos de Lucas -->
     <% const hasLucas = dates.some(date => date.barber === 'Lucas Gonzalez' &&
     date.status); %> <% if (hasLucas) { %>
-    <h3 class="my-4 text-center">Lucas</h3>
-    <% dates.forEach(function(date) { %> <% if (date.barber === 'Lucas Gonzalez'
-    && date.status) { %>
-    <div class="col-md-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
-          <p class="card-text">
-            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
-            date.barber %>
-          </p>
-          <p class="card-text">
-            Estado:
-            <span class="badge bg-success">Disponible</span>
-          </p>
-          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
-            >Tomar Turno</a
-          >
-          <div id="wallet_container"></div>
+    <h3
+      class="my-4 text-center"
+      id="lucasHeader"
+      style="cursor: pointer"
+      onclick="toggleLucas()"
+    >
+      Lucas <span id="lucasArrow">⬇️</span>
+    </h3>
+    <div id="lucasDates" style="display: none">
+    <% dates.forEach(function(date) { %> <% if (date.barber == 'Lucas Gonzalez' && date.status) { %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+            <p class="card-text">
+              De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+              date.barber %>
+            </p>
+            <p class="card-text">
+              Estado:
+              <span class="badge bg-success">Disponible</span>
+            </p>
+            <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+              >Tomar Turno</a
+            >
+            <div id="wallet_container"></div>
+          </div>
         </div>
       </div>
+      <% } %> <% }); %>
     </div>
-    <% } %> <% }); %> <% } %>
+    <% } %>
     <!-- Turnos de Brian -->
     <% const hasBrian = dates.some(date => date.barber === 'Brian Bravo' &&
     date.status); %> <% if (hasBrian) { %>
-    <h3 class="my-4 text-center">Brian</h3>
-    <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo' &&
-    date.status) { %>
-    <div class="col-md-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
-          <p class="card-text">
-            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
-            date.barber %>
-          </p>
-          <p class="card-text">
-            Estado:
-            <span class="badge bg-success">Disponible</span>
-          </p>
-          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
-            >Tomar Turno</a
-          >
-          <div id="wallet_container"></div>
+    <h3
+      class="my-4 text-center"
+      id="brianHeader"
+      style="cursor: pointer"
+      onclick="toggleBrian()"
+    >
+      Brian <span id="brianArrow">⬇️</span>
+    </h3>
+    <div id="brianDates" style="display: none">
+      <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo'
+      && date.status) { %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+            <p class="card-text">
+              De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+              date.barber %>
+            </p>
+            <p class="card-text">
+              Estado:
+              <span class="badge bg-success">Disponible</span>
+            </p>
+            <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+              >Tomar Turno</a
+            >
+            <div id="wallet_container"></div>
+          </div>
         </div>
       </div>
+      <% } %> <% }); %>
     </div>
-    <% } %> <% }); %> <% } %>
+    <% } %>
     <!-- Turnos de Mirko -->
 
     <% const hasMirko = dates.some(date => date.barber === 'Mirko Collao' &&
     date.status); %> <% if (hasMirko) { %>
-    <h3 class="my-4 text-center">Mirko</h3>
-    <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
-    && date.status) { %>
-    <div class="col-md-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
-          <p class="card-text">
-            De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
-            date.barber %>
-          </p>
-          <p class="card-text">
-            Estado:
-            <span class="badge bg-success">Disponible</span>
-          </p>
-          <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
-            >Tomar Turno</a
-          >
-          <div id="wallet_container"></div>
+    <h3
+      class="my-4 text-center"
+      id="mirkoHeader"
+      style="cursor: pointer"
+      onclick="toggleMirko()"
+    >
+      Mirko <span id="mirkoArrow">⬇️</span>
+    </h3>
+    <div id="mirkoDates" style="display: none">
+      <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
+      && date.status) { %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+            <p class="card-text">
+              De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
+              date.barber %>
+            </p>
+            <p class="card-text">
+              Estado:
+              <span class="badge bg-success">Disponible</span>
+            </p>
+            <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
+              >Tomar Turno</a
+            >
+            <div id="wallet_container"></div>
+          </div>
         </div>
       </div>
+      <% } %> <% }); %>
     </div>
-    <% } %> <% }); %> <% } %>
+    <% } %>
   </div>
 </section>
 <script>
@@ -113,6 +142,45 @@
       }
     });
   });
+
+  function toggleLucas() {
+    var container = document.getElementById('lucasDates');
+    var arrowIcon = document.getElementById('lucasArrow');
+
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      arrowIcon.textContent = '⬆️';
+    } else {
+      container.style.display = 'none';
+      arrowIcon.textContent = '⬇️';
+    }
+  }
+
+  function toggleBrian() {
+    var container = document.getElementById('brianDates');
+    var arrowIcon = document.getElementById('brianArrow');
+
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      arrowIcon.textContent = '⬆️';
+    } else {
+      container.style.display = 'none';
+      arrowIcon.textContent = '⬇️';
+    }
+  }
+
+  function toggleMirko() {
+    var container = document.getElementById('mirkoDates');
+    var arrowIcon = document.getElementById('mirkoArrow');
+
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      arrowIcon.textContent = '⬆️';
+    } else {
+      container.style.display = 'none';
+      arrowIcon.textContent = '⬇️';
+    }
+  }
 
   const createCheckoutButton = (preferenceId) => {
     const bricksBuilder = mp.bricks();

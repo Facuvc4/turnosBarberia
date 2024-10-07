@@ -14,102 +14,109 @@
   <div class="row">
     <!-- Turnos de Lucas --><% const hasLucas = datas.some(data => data.date.barber === 'Lucas Gonzalez'); %>
 
-<% if (hasLucas) { %>
-  <h3 class="my-4 text-center">Lucas</h3>
-  <% datas.forEach(function(data) { %>
-      <% if (data.date.barber === 'Lucas Gonzalez') { %>
-          <div class="col-md-4 mb-3">
-              <div class="card shadow-sm">
-                  <div class="card-body">
-                      <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
-                      <p class="card-text">
-                          De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
-                      </p>
-                      <p class="card-text">
-                          Estado: 
-                          <% if(data.date.status) { %>
-                              <span class="badge bg-success">Disponible</span>
-                          <% } else { %>
-                              <span class="badge bg-danger">Tomado</span>
-                              <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
-                          <% } %>
-                      </p>
-                      <% if(data.date.status) { %>
-                          <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
-                          <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
-                      <% } %>
+    <% if (hasLucas) { %>
+      <h3 class="my-4 text-center" id="barberHeader" style="cursor: pointer;" onclick="toggleDates()">Lucas <span id="arrowIcon">⬇️</span></h3>
+      <div id="datesContainer" style="display: none;">
+          <% datas.forEach(function(data) { %>
+              <% if (data.date.barber === 'Lucas Gonzalez') { %>
+                  <div class="col-md-4 mb-3">
+                      <div class="card shadow-sm">
+                          <div class="card-body">
+                              <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
+                              <p class="card-text">
+                                  De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
+                              </p>
+                              <p class="card-text">
+                                  Estado: 
+                                  <% if(data.date.status) { %>
+                                      <span class="badge bg-success">Disponible</span>
+                                  <% } else { %>
+                                      <span class="badge bg-danger">Tomado</span>
+                                      <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
+                                  <% } %>
+                              </p>
+                              <% if(data.date.status) { %>
+                                  <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
+                                  <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
+                              <% } %>
+                          </div>
+                      </div>
                   </div>
-              </div>
-          </div>
-      <% } %>
-  <% }); %>
-<% } %>
+              <% } %>
+          <% }); %>
+      </div>
+    <% } %>
     <!-- Turnos de Brian -->
     <% const hasBrian = datas.some(data => data.date.barber === 'Brian Bravo'); %>
-
-<% if (hasBrian) { %>
-    <h3 class="my-4 text-center">Brian</h3>
-    <% datas.forEach(function(data) { %>
-        <% if (data.date.barber === 'Brian Bravo') { %>
-            <div class="col-md-4 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
-                        <p class="card-text">
-                            De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
-                        </p>
-                        <p class="card-text">
-                            Estado: 
-                            <% if(data.date.status) { %>
-                                <span class="badge bg-success">Disponible</span>
-                            <% } else { %>
-                                <span class="badge bg-danger">Tomado</span>
-                                <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
-                            <% } %>
-                        </p>
-                        <% if(data.date.status) { %>
-                            <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
-                            <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
-                        <% } %>
-                    </div>
-                </div>
-            </div>
-        <% } %>
-    <% }); %>
-<% } %>
-    <!-- Turnos de Mirko -->
     <% const hasMirko = datas.some(data => data.date.barber === 'Mirko Collao'); %>
 
-    <% if (hasMirko) { %>
-        <h3 class="my-4 text-center">Mirko</h3>
-        <% datas.forEach(function(data) { %>
-            <% if (data.date.barber === 'Mirko Collao') { %>
-                <div class="col-md-4 mb-3">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
-                            <p class="card-text">
-                                De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
-                            </p>
-                            <p class="card-text">
-                                Estado: 
-                                <% if(data.date.status) { %>
-                                    <span class="badge bg-success">Disponible</span>
-                                <% } else { %>
-                                    <span class="badge bg-danger">Tomado</span>
-                                    <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
-                                <% } %>
-                            </p>
-                            <% if(data.date.status) { %>
-                                <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
-                                <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-            <% } %>
-        <% }); %>
-    <% } %>
+<!-- Turnos de Brian -->
+<% if (hasBrian) { %>
+  <h3 class="my-4 text-center" id="brianHeader" style="cursor: pointer;" onclick="toggleBrian()">Brian <span id="brianArrow">⬇️</span></h3>
+  <div id="brianDates" style="display: none;">
+    <% datas.forEach(function(data) { %>
+      <% if (data.date.barber === 'Brian Bravo') { %>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
+              <p class="card-text">
+                De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
+              </p>
+              <p class="card-text">
+                Estado:
+                <% if (data.date.status) { %>
+                  <span class="badge bg-success">Disponible</span>
+                <% } else { %>
+                  <span class="badge bg-danger">Tomado</span>
+                  <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
+                <% } %>
+              </p>
+              <% if (data.date.status) { %>
+                <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
+                <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+<% } %>
+
+<!-- Turnos de Mirko -->
+<% if (hasMirko) { %>
+  <h3 class="my-4 text-center" id="mirkoHeader" style="cursor: pointer;" onclick="toggleMirko()">Mirko <span id="mirkoArrow">⬇️</span></h3>
+  <div id="mirkoDates" style="display: none;">
+    <% datas.forEach(function(data) { %>
+      <% if (data.date.barber === 'Mirko Collao') { %>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
+              <p class="card-text">
+                De: <%= data.date.initHour %>hs a <%= data.date.endHour %>hs Barbero: <%= data.date.barber %>
+              </p>
+              <p class="card-text">
+                Estado:
+                <% if (data.date.status) { %>
+                  <span class="badge bg-success">Disponible</span>
+                <% } else { %>
+                  <span class="badge bg-danger">Tomado</span>
+                  <p class="card-text"><%= data.user.name %> <%= data.user.phone %></p>
+                <% } %>
+              </p>
+              <% if (data.date.status) { %>
+                <a class="btn btn-primary" id="takeShift" data-id="<%= data.date.id %>">Tomar Turno</a>
+                <a class="btn btn-warning m-3" id="deleteDate" data-id="<%= data.date.id %>">Eliminar</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+<% } %>
   </div>
 </section>
 
@@ -224,6 +231,45 @@
       }
     });
   });
+
+  function toggleDates() {
+    var container = document.getElementById("datesContainer");
+    var arrowIcon = document.getElementById("arrowIcon");
+    
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      arrowIcon.textContent = "⬆️";
+    } else {
+      container.style.display = "none";
+      arrowIcon.textContent = "⬇️";
+    }
+  }
+
+  function toggleBrian() {
+    var container = document.getElementById("brianDates");
+    var arrowIcon = document.getElementById("brianArrow");
+    
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      arrowIcon.textContent = "⬆️";
+    } else {
+      container.style.display = "none";
+      arrowIcon.textContent = "⬇️";
+    }
+  }
+
+  function toggleMirko() {
+    var container = document.getElementById("mirkoDates");
+    var arrowIcon = document.getElementById("mirkoArrow");
+    
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      arrowIcon.textContent = "⬆️";
+    } else {
+      container.style.display = "none";
+      arrowIcon.textContent = "⬇️";
+    }
+  }
 
   document.querySelectorAll('#takeShift').forEach(function (button) {
     button.addEventListener('click', function () {
