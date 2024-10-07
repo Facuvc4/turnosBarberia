@@ -19,7 +19,7 @@
       <div id="datesContainer" style="display: none;">
           <% datas.forEach(function(data) { %>
               <% if (data.date.barber === 'Lucas Gonzalez') { %>
-                  <div class="col-md-4 mb-3">
+                  <div class="col-md-4 m-3">
                       <div class="card shadow-sm">
                           <div class="card-body">
                               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
@@ -56,7 +56,7 @@
   <div id="brianDates" style="display: none;">
     <% datas.forEach(function(data) { %>
       <% if (data.date.barber === 'Brian Bravo') { %>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 m-3">
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
@@ -90,7 +90,7 @@
   <div id="mirkoDates" style="display: none;">
     <% datas.forEach(function(data) { %>
       <% if (data.date.barber === 'Mirko Collao') { %>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 m-3">
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">Fecha: <%= data.date.formattedDate %></h5>
@@ -237,7 +237,7 @@
     var arrowIcon = document.getElementById("arrowIcon");
     
     if (container.style.display === "none") {
-      container.style.display = "block";
+      container.style.display = "flex";
       arrowIcon.textContent = "⬆️";
     } else {
       container.style.display = "none";
@@ -250,7 +250,7 @@
     var arrowIcon = document.getElementById("brianArrow");
     
     if (container.style.display === "none") {
-      container.style.display = "block";
+      container.style.display = "flex";
       arrowIcon.textContent = "⬆️";
     } else {
       container.style.display = "none";
@@ -263,7 +263,7 @@
     var arrowIcon = document.getElementById("mirkoArrow");
     
     if (container.style.display === "none") {
-      container.style.display = "block";
+      container.style.display = "flex";
       arrowIcon.textContent = "⬆️";
     } else {
       container.style.display = "none";

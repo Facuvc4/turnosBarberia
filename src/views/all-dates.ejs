@@ -14,27 +14,26 @@
       Lucas <span id="lucasArrow">⬇️</span>
     </h3>
     <div id="lucasDates" style="display: none">
-    <% dates.forEach(function(date) { %> <% if (date.barber == 'Lucas Gonzalez' && date.status) { %>
-      <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
-            <p class="card-text">
-              De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%=
-              date.barber %>
-            </p>
-            <p class="card-text">
-              Estado:
-              <span class="badge bg-success">Disponible</span>
-            </p>
-            <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>"
-              >Tomar Turno</a
-            >
-            <div id="wallet_container"></div>
+      <% dates.forEach(function(date) { %> 
+        <% if (date.barber == 'Lucas Gonzalez' && date.status) { %>
+          <div class="col-md-4 m-3">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
+                <p class="card-text">
+                  De: <%= date.initHour %>hs a <%= date.endHour %>hs Barbero: <%= date.barber %>
+                </p>
+                <p class="card-text">
+                  Estado:
+                  <span class="badge bg-success">Disponible</span>
+                </p>
+                <a class="btn btn-primary" id="takeShift" data-id="<%= date.id %>">Tomar Turno</a>
+                <div id="wallet_container"></div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <% } %> <% }); %>
+        <% } %> 
+      <% }); %>
     </div>
     <% } %>
     <!-- Turnos de Brian -->
@@ -51,7 +50,7 @@
     <div id="brianDates" style="display: none">
       <% dates.forEach(function(date) { %> <% if (date.barber === 'Brian Bravo'
       && date.status) { %>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 m-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
@@ -88,7 +87,7 @@
     <div id="mirkoDates" style="display: none">
       <% dates.forEach(function(date) { %> <% if (date.barber === 'Mirko Collao'
       && date.status) { %>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 m-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Fecha: <%= date.formattedDate %></h5>
@@ -148,7 +147,7 @@
     var arrowIcon = document.getElementById('lucasArrow');
 
     if (container.style.display === 'none') {
-      container.style.display = 'block';
+      container.style.display = 'flex';
       arrowIcon.textContent = '⬆️';
     } else {
       container.style.display = 'none';
@@ -161,7 +160,7 @@
     var arrowIcon = document.getElementById('brianArrow');
 
     if (container.style.display === 'none') {
-      container.style.display = 'block';
+      container.style.display = 'flex';
       arrowIcon.textContent = '⬆️';
     } else {
       container.style.display = 'none';
@@ -174,7 +173,7 @@
     var arrowIcon = document.getElementById('mirkoArrow');
 
     if (container.style.display === 'none') {
-      container.style.display = 'block';
+      container.style.display = 'flex';
       arrowIcon.textContent = '⬆️';
     } else {
       container.style.display = 'none';
